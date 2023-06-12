@@ -149,10 +149,14 @@ const Home = styled.div`
   font-size: 2rem;
 `;
 function Coin() {
+  // url param을 할당
   const { coinId } = useParams<RouteParams>();
+  // 받아온 state를 할당
   const { state } = useLocation<RouteState>();
   const priceMatch = useRouteMatch("/:coinId/price");
   const chartMatch = useRouteMatch("/:coinId/chart");
+
+  // coin info 데이터와 coin ticker 데이터를 fetch
   const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>(
     ["info", coinId],
     () => fetchCoinInfo(coinId)
@@ -178,6 +182,8 @@ function Coin() {
       setLoading(false);
     })();
   }, [coinId]); */
+
+  // 둘 중 하나라도 true면 로딩중
   const loading = infoLoading || tickersLoading;
   return (
     <Container>
