@@ -62,7 +62,10 @@ const Img = styled.img`
   height: 35px;
   margin-right: 10px;
 `;
+
 function Coins() {
+  // query key(useQuery 마다 부여되는 고유 key, cashing 역할도 해준다.)와 queryFn(promise 처리가 이루어지는 함수)로 이루어짐
+  // isLoading에는 promise처리가 끝난지 여부를 받게되고, data에는 실제 데이터가 들어간다.
   const { isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins);
   /* 
   const [coins, setCoins] = useState<CoinInterface[]>([]);
@@ -79,6 +82,7 @@ function Coins() {
 
   return (
     <Container>
+      {/* html 문서 head에 접근할때 사용 */}
       <Helmet>
         <title>Coins</title>
       </Helmet>
@@ -91,6 +95,7 @@ function Coins() {
         <CoinsList>
           {data?.slice(0, 100).map((coin) => (
             <Coin key={coin.id}>
+              {/* link에 state값도 포함해서 전달해준다. */}
               <Link
                 to={{
                   pathname: `/${coin.id}/chart`,

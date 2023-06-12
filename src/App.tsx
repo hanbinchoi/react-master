@@ -5,6 +5,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { darkTheme, lightTheme } from "./theme";
 import Toggle from "./Toggle";
 
+// style component를 전역으로 정의
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
 
@@ -68,18 +69,24 @@ a {
   color: inherit;
 }
 `;
+
 function App() {
+  // dark mode, light mode 상태를 감지하기위한 state
   const [mode, setMode] = useState(false);
+  // toggle event
   const handleToggle = () => {
     setMode(!mode);
   };
   return (
     <>
+      {/* 테마 적용 */}
       <ThemeProvider theme={mode ? darkTheme : lightTheme}>
+        {/* 전역 스타일 적용 */}
         <GlobalStyle />
         <Toggle handleToggle={handleToggle} mode={mode} />
         <Router />
-        <ReactQueryDevtools initialIsOpen={true} />
+        {/* 실시간으로 React query를 확인하게 해주는 툴 */}
+        {/* <ReactQueryDevtools initialIsOpen={true} /> */}
       </ThemeProvider>
     </>
   );

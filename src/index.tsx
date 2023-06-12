@@ -13,6 +13,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <div>
+    {/* react-query를 앱 전체에서 사용하기위해 최상위단에서 선언해줌 */}
     <QueryClientProvider client={queryClient}>
       <App />
     </QueryClientProvider>
