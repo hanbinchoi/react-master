@@ -1,5 +1,1 @@
-/ -> All coins
-/:id -> /btc -> Coin Detail
-
-/btc/information
-/btc/chart
+### Coin Tracker Web Application
