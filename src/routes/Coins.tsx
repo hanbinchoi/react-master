@@ -22,7 +22,7 @@ const CoinsList = styled.ul``;
 
 const Coin = styled.li`
   background-color: white;
-  color: ${(props) => props.theme.bgColor};
+  color: ${(props) => props.theme.accentColor};
   border-radius: 15px;
   margin-bottom: 10px;
   a {
@@ -93,7 +93,7 @@ function Coins() {
             <Coin key={coin.id}>
               <Link
                 to={{
-                  pathname: `/${coin.id}`,
+                  pathname: `/${coin.id}/chart`,
                   state: { name: coin.name },
                 }}
               >

@@ -13,6 +13,7 @@ import Chart from "./Chart";
 import { Link } from "react-router-dom";
 import { useQueries, useQuery } from "react-query";
 import { fetchCoinInfo, fetchCoinTickers } from "../api";
+import { ImHome } from "react-icons/im";
 
 const Title = styled.h1`
   font-size: 48px;
@@ -140,6 +141,13 @@ const Tab = styled.span<{ isActive: boolean }>`
     display: block;
   }
 `;
+const Home = styled.div`
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  color: ${(props) => props.theme.accentColor};
+  font-size: 2rem;
+`;
 function Coin() {
   const { coinId } = useParams<RouteParams>();
   const { state } = useLocation<RouteState>();
@@ -151,10 +159,7 @@ function Coin() {
   );
   const { isLoading: tickersLoading, data: tickersData } = useQuery<PriceData>(
     ["tickers", coinId],
-    () => fetchCoinTickers(coinId),
-    {
-      refetchInterval: 5000,
-    }
+    () => fetchCoinTickers(coinId)
   );
 
   /*  const [loading, setLoading] = useState(true);
@@ -182,6 +187,11 @@ function Coin() {
         </title>
       </Helmet>
       <Header>
+        <Link to={"/"}>
+          <Home>
+            <ImHome />
+          </Home>
+        </Link>
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </Title>
@@ -225,7 +235,7 @@ function Coin() {
           </Tabs>
           <Switch>
             <Route path={`/:coinId/price`}>
-              <Price />
+              <Price coinId={coinId} />
             </Route>
             <Route path={`/:coinId/chart`}>
               <Chart coinId={coinId} />
