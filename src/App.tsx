@@ -72,7 +72,7 @@ a {
 
 function App() {
   // dark mode, light mode 상태를 감지하기위한 state
-  const [mode, setMode] = useState(false);
+  const [mode, setMode] = useState(true);
   // toggle event
   const handleToggle = () => {
     setMode(!mode);

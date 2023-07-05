@@ -55,7 +55,7 @@ function Toggle({ handleToggle, mode }: toggleProps) {
   return (
     <Container>
       <label>
-        <input role="switch" type="checkbox" onClick={onClick} checked={mode} />
+        <input role="switch" type="checkbox" onClick={onClick} defaultChecked />
         <span>{mode ? "Dark Mode" : "Light Mode"}</span>
       </label>
     </Container>
