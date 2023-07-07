@@ -6,6 +6,7 @@ function Router() {
   return (
     <BrowserRouter>
       <Switch>
+        {/* react-route를 사용한 어플리케이션을 gh-pages로 배포할 경우 process.env.PUBLIC_URL을 앞에 붙여줘야 한다. */}
         <Route path={`${process.env.PUBLIC_URL}/:coinId`}>
           <Coin />
         </Route>
