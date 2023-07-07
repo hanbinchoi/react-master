@@ -98,7 +98,7 @@ function Coins() {
               {/* link에 state값도 포함해서 전달해준다. */}
               <Link
                 to={{
-                  pathname: `/${coin.id}/chart`,
+                  pathname: `${process.env.PUBLIC_URL}/${coin.id}/chart`,
                   state: { name: coin.name },
                 }}
               >
